@@ -1,0 +1,9 @@
+{
+  "name": "ugrep-repo-tools",
+  "private": true,
+  "scripts": {
+    "build": "./build.sh",
+    "test": "make test",
+    "verify": "npm run build && npm run test"
+  }
+}

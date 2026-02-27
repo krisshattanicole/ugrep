@@ -440,6 +440,12 @@ Execute the `./build.sh` script to build `ugrep`:
     $ cd ugrep
     $ ./build.sh
 
+Or call the same build/test flow programmatically from tools that expect a
+`package.json` entry point:
+
+    $ npm run build
+    $ npm run test
+
 This builds the `ugrep` executable in the `ugrep/src` directory with
 `./configure` and `make -j`, verified with `make test`.  When all tests pass,
 the `ugrep` executable is copied to `ugrep/bin/ugrep` and the symlink
@@ -5793,4 +5799,3 @@ the [man page](#man).  If you can't find it there and it looks like a bug, then
 reports are quickly addressed.
 
 *Copyright (c) Robert van Engelen, 2025*
-

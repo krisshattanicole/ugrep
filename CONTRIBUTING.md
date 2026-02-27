@@ -22,6 +22,11 @@ Did you find a bug?
 Do you have a patch that fixes a bug?
 -------------------------------------
 
+- If you work from a fork that should be detached from syncing with the original
+  repository, remove the upstream remote before opening your PR:
+
+      $ git remote remove upstream
+
 - Use the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
   as a guideline to write the source code for the patch.
 - Open a new GitHub pull request with the patch.
