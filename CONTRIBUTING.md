@@ -22,13 +22,6 @@ Did you find a bug?
 Do you have a patch that fixes a bug?
 -------------------------------------
 
-- If you intentionally want a detached fork workflow (no automatic sync from
-  the original repository), remove the `upstream` remote before opening your
-  PR.  Otherwise, keep `upstream` configured so you can sync with the original
-  repository:
-
-      $ git remote remove upstream
-
 - Use the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
   as a guideline to write the source code for the patch.
 - Open a new GitHub pull request with the patch.

@@ -446,6 +446,12 @@ Or call the same build/test flow programmatically from tools that expect a
     $ npm run build
     $ npm run test
 
+When this repository is integrated from a fork and you intentionally want a
+detached workflow (no sync from the original repository), remove the `upstream`
+remote once:
+
+    $ git remote remove upstream
+
 This builds the `ugrep` executable in the `ugrep/src` directory with
 `./configure` and `make -j`, verified with `make test`.  When all tests pass,
 the `ugrep` executable is copied to `ugrep/bin/ugrep` and the symlink
