@@ -1,0 +1,44 @@
+name: Vendor Fork
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Repository to vendor, e.g. owner/repo'
+        required: true
+        type: string
+      prefix:
+        description: 'Destination prefix in this repo, must start with vendor/'
+        required: true
+        type: string
+      ref:
+        description: 'Branch or tag to vendor'
+        required: false
+        default: main
+        type: string
+      target_branch:
+        description: 'Branch in this repository to receive the vendored commit'
+        required: false
+        default: main
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.target_branch }}
+      - name: Configure Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Vendor forked repository
+        run: |
+          sh ./tools/vendor-fork.sh "https://github.com/${{ inputs.repository }}.git" "${{ inputs.prefix }}" "${{ inputs.ref }}"
+      - name: Push vendored commit
+        run: git push origin HEAD:${{ inputs.target_branch }}

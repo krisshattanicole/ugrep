@@ -1,0 +1,10 @@
+{
+  "name": "ugrep-repo-tools",
+  "private": true,
+  "scripts": {
+    "build": "sh ./build.sh",
+    "test": "make test",
+    "verify": "npm run build && npm run test",
+    "vendor:fork": "sh ./tools/vendor-fork.sh"
+  }
+}

@@ -440,6 +440,28 @@ Execute the `./build.sh` script to build `ugrep`:
     $ cd ugrep
     $ ./build.sh
 
+Or call the same build/test flow programmatically from tools that expect a
+`package.json` entry point:
+
+    $ npm run build
+    $ npm run test
+
+When this repository is integrated from a fork and you intentionally want a
+detached workflow (no sync from the original repository), remove the `upstream`
+remote once:
+
+    $ git remote remove upstream
+
+To vendor a forked repository into this repository without rewriting code, use:
+
+    $ npm run vendor:fork -- https://github.com/OWNER/REPO.git vendor/REPO main
+
+This imports code with `git subtree` into `vendor/REPO`. The same flow can be
+run from GitHub Actions with the `Vendor Fork` workflow
+(`.github/workflows/vendor-fork.yml`) by providing `repository`, `prefix`,
+`ref`, and `target_branch`, which is useful when a fork is created only to be
+vendored into this repository.
+
 This builds the `ugrep` executable in the `ugrep/src` directory with
 `./configure` and `make -j`, verified with `make test`.  When all tests pass,
 the `ugrep` executable is copied to `ugrep/bin/ugrep` and the symlink
@@ -5793,4 +5815,3 @@ the [man page](#man).  If you can't find it there and it looks like a bug, then
 reports are quickly addressed.
 
 *Copyright (c) Robert van Engelen, 2025*
-
