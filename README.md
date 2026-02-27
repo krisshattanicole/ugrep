@@ -452,6 +452,15 @@ remote once:
 
     $ git remote remove upstream
 
+To vendor a forked repository into this repository without recoding, use:
+
+    $ npm run vendor:fork -- https://github.com/OWNER/REPO.git vendor/REPO main
+
+This imports code with `git subtree` into `vendor/REPO`.  The same flow can be
+run from GitHub Actions with the `Vendor Fork` workflow
+(`.github/workflows/vendor-fork.yml`), which is useful when a fork is created
+only to be vendored into this repository.
+
 This builds the `ugrep` executable in the `ugrep/src` directory with
 `./configure` and `make -j`, verified with `make test`.  When all tests pass,
 the `ugrep` executable is copied to `ugrep/bin/ugrep` and the symlink
